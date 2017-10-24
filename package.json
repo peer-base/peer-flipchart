@@ -1,0 +1,27 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "browserify src/index.js -d -o public/index.bundle.js",
+    "build:watch": "watchify src/index.js -d -o public/index.bundle.js -v",
+    "start": "npm run build && npm run start:server",
+    "start:server": "serve public"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "browserify": "^14.5.0",
+    "d3": "^4.11.0",
+    "ipfs": "^0.26.0",
+    "serve": "^6.3.1",
+    "watchify": "^3.9.0",
+    "y-array": "^10.1.4",
+    "y-indexeddb": "^8.1.9",
+    "y-ipfs-connector": "^1.4.0",
+    "y-memory": "^8.0.9",
+    "yjs": "^12.3.3"
+  }
+}
