@@ -52,7 +52,7 @@ const d3 = require('d3')
   var renderPath = d3.line()
     .x(function (d) { return d[0] })
     .y(function (d) { return d[1] })
-    .curve(d3.curveMonotoneX)
+    .curve(d3.curveNatural)
 
   // ------ D3 Flipchart drawing initialization ------
   var svg = d3.select('#flipchart')
