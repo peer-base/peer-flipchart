@@ -48,6 +48,10 @@ $ npm start
 Head out to [http://localhost:5000](http://localhost:5000) and verify that the flipchart app is functional.
 
 
+## Code!
+
+Open file `[src/index.js](src/index.js)` in a code editor.
+
 ### Step 1: create an IPFS node
 
 Uncomment all the lines that are related to starting an IPFS node.
