@@ -15,7 +15,6 @@
   "dependencies": {
     "browserify": "^14.5.0",
     "d3": "^4.11.0",
-    "ipfs": "^0.26.0",
     "serve": "^6.3.1",
     "watchify": "^3.9.0",
     "y-array": "^10.1.4",

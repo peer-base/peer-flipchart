@@ -10,7 +10,6 @@
 const d3 = require('d3')
 
 // ------ IPFS node creation ------
-const IPFS = require('ipfs')
 const ipfs = new IPFS({
   EXPERIMENTAL: {
     pubsub: true
