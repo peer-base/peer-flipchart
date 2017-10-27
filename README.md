@@ -101,27 +101,30 @@ Now it should all be working, and all connected nodes should be able to see each
 * IndexedDB is used to persist CRDT data
 
 ```
-┌─────────┐
-│         │    ┌──────────┐                  ┌──────────┐
-│         │    │          │                  │          │
-│         │    │Flipchart │                  │Flipchart │
-│         │    │   App    │◀────────────────▶│   App    │
-│         │    │          │                  │          │
-│         │    └──────────┘                  └──────────┘
-│         │          ▲                             ▲
-│Signaling│          │                             │
-│ Server  │          │                             │
-│         │          │                             │
-│         │          │        ┌──────────┐         │
-│         │          │        │          │         │
-│         │          │        │Flipchart │         │
-│         │          └───────▶│   App    │◀────────┘
-│         │                   │          │
-│         │                   └──────────┘
-└─────────┘
+   ┌──────────┐                  ┌──────────┐
+   │          │                  │          │
+   │Flipchart │                  │Flipchart │
+   │   App    │◀────────────────▶│   App    │
+   │          │                  │          │
+   └──────────┘                  └──────────┘
+         ▲                             ▲
+         │                             │
+         │                             │
+         │                             │
+         │        ┌──────────┐         │      ┌──────────┐
+         │        │          │         │      │          │
+         │        │Flipchart │         │      │Other IPFS│
+         └───────▶│   App    │◀────────┘      │   node   │
+                  │          │                │          │
+┌──────────┐      └──────────┘                └──────────┘
+│          │
+│Other IPFS│
+│   node   │
+│          │
+└──────────┘
 ```
 
-After discovering each-other through a signaling server, nodes connect directly.
+After discovering each-other, nodes connect directly.
 
 
 # License
