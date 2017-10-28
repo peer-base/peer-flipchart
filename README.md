@@ -24,7 +24,7 @@ $ cd p2p-flipchart
 ### Install
 
 ```bash
-$ npm init
+$ npm install
 ````
 
 ### Start
