@@ -50,7 +50,7 @@ Head out to [http://localhost:5000](http://localhost:5000) and verify that the f
 
 ## Code!
 
-Open file `[src/index.js](src/index.js)` in a code editor.
+Open file [`src/index.js`](src/index.js) in a code editor.
 
 ### Step 1: create an IPFS node
 
