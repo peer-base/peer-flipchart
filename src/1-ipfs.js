@@ -10,9 +10,16 @@
 const d3 = require('d3')
 
 // ------ IPFS node creation ------
-const ipfs = new IPFS({
+const ipfs = new Ipfs({
   EXPERIMENTAL: {
     pubsub: true
+  },
+  config: {
+    Addresses: {
+      Swarm: [
+        '/dns4/wrtc-star.discovery.libp2p.io/tcp/443/wss/p2p-webrtc-star'
+      ]
+    }
   }
 })
 
