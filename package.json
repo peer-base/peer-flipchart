@@ -8,7 +8,7 @@
     "build:watch": "watchify src/index.js -d -o public/index.bundle.js -v",
     "start": "npm run build && npm run start:server",
     "start:server": "serve public",
-    "update:ipfs": "wget https://unpkg.com/ipfs/dist/index.min.js -O public/ipfs.bundle.js"
+    "update:ipfs": "wget https://unpkg.com/ipfs/dist/index.js -O public/ipfs.bundle.js"
   },
   "keywords": [],
   "author": "",
@@ -20,7 +20,7 @@
     "watchify": "^3.9.0",
     "y-array": "^10.1.4",
     "y-indexeddb": "^8.1.9",
-    "y-ipfs-connector": "^2.0.2",
+    "y-ipfs-connector": "^2.1.2",
     "y-memory": "^8.0.9",
     "yjs": "^12.3.3"
   }
