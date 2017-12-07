@@ -10,9 +10,16 @@
 const d3 = require('d3')
 
 // ------ IPFS node creation ------
-const ipfs = new IPFS({
+const ipfs = new Ipfs({
   EXPERIMENTAL: {
     pubsub: true
+  },
+  config: {
+    Addresses: {
+      Swarm: [
+        '/dns4/ws-star.discovery.libp2p.io/tcp/443/wss/p2p-websocket-star'
+      ]
+    }
   }
 })
 
@@ -29,7 +36,7 @@ async function ipfsStarted () {
   //   },
   //   connector: {
   //     name: 'ipfs',
-  //     room: 'mozfest-flipchart',
+  //     room: 'p2p-flipchart-demo-room',
   //     ipfs: ipfs
   //   },
   //   share: {

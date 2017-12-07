@@ -13,6 +13,13 @@ const d3 = require('d3')
 // const ipfs = new IPFS({
 //   EXPERIMENTAL: {
 //     pubsub: true
+//   },
+//   config: {
+//     Addresses: {
+//       Swarm: [
+//         '/dns4/ws-star.discovery.libp2p.io/tcp/443/wss/p2p-websocket-star'
+//       ]
+//     }
 //   }
 // })
 
@@ -29,7 +36,7 @@ const d3 = require('d3')
   //   },
   //   connector: {
   //     name: 'ipfs',
-  //     room: 'mozfest-flipchart',
+  //     room: 'p2p-flipchart-demo-room',
   //     ipfs: ipfs
   //   },
   //   share: {
