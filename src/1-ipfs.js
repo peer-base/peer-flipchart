@@ -17,7 +17,7 @@ const ipfs = new Ipfs({
   config: {
     Addresses: {
       Swarm: [
-        '/dns4/wrtc-star.discovery.libp2p.io/tcp/443/wss/p2p-webrtc-star'
+        '/dns4/ws-star.discovery.libp2p.io/tcp/443/wss/p2p-websocket-star'
       ]
     }
   }
@@ -36,7 +36,7 @@ async function ipfsStarted () {
   //   },
   //   connector: {
   //     name: 'ipfs',
-  //     room: 'mozfest-flipchart',
+  //     room: 'p2p-flipchart-demo-room',
   //     ipfs: ipfs
   //   },
   //   share: {

@@ -9,6 +9,8 @@ require('y-ipfs-connector')(Y)
 
 const d3 = require('d3')
 
+const EventEmitter = require('events')
+
 // ------ IPFS node creation ------
 const ipfs = new Ipfs({
   EXPERIMENTAL: {
@@ -17,7 +19,7 @@ const ipfs = new Ipfs({
   config: {
     Addresses: {
       Swarm: [
-        '/dns4/wrtc-star.discovery.libp2p.io/tcp/443/wss/p2p-webrtc-star'
+        '/dns4/ws-star.discovery.libp2p.io/tcp/443/wss/p2p-websocket-star'
       ]
     }
   }
@@ -25,6 +27,9 @@ const ipfs = new Ipfs({
 
 // ------ Wait for IPFS to start ------
 ipfs.once('start', ipfsStarted)
+ipfs.on('error', (err) => {
+  console.log(err)
+})
 
 async function ipfsStarted () {
   console.log('IPFS started')
@@ -36,7 +41,7 @@ async function ipfsStarted () {
     },
     connector: {
       name: 'ipfs',
-      room: 'mozfest-flipchart',
+      room: 'p2p-flipchart-demo-room',
       ipfs: ipfs
     },
     share: {

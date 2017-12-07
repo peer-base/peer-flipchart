@@ -1,64 +1,58 @@
 'use strict';
 
 // ------ Y.js: import and wire dependencies --------
-const Y = require('yjs')
-require('y-array')(Y)
-require('y-memory')(Y)
-require('y-indexeddb')(Y)
-require('y-ipfs-connector')(Y)
+// const Y = require('yjs')
+// require('y-array')(Y)
+// require('y-memory')(Y)
+// require('y-indexeddb')(Y)
+// require('y-ipfs-connector')(Y)
 
 const d3 = require('d3')
 
 // ------ IPFS node creation ------
-const ipfs = new Ipfs({
-  EXPERIMENTAL: {
-    pubsub: true
-  },
-  config: {
-    Addresses: {
-      Swarm: [
-        '/dns4/wrtc-star.discovery.libp2p.io/tcp/443/wss/p2p-webrtc-star'
-        // '/dns4/ws-star.discovery.libp2p.io/tcp/443/wss/p2p-websocket-star'
-      ]
-    }
-  }
-})
+// const ipfs = new IPFS({
+//   EXPERIMENTAL: {
+//     pubsub: true
+//   },
+//   config: {
+//     Addresses: {
+//       Swarm: [
+//         '/dns4/ws-star.discovery.libp2p.io/tcp/443/wss/p2p-websocket-star'
+//       ]
+//     }
+//   }
+// })
 
 // ------ Wait for IPFS to start ------
-ipfs.once('start', ipfsStarted)
-ipfs.on('error', (err) => {
-  console.log(err)
-})
+// ipfs.once('start', ipfsStarted)
 
-async function ipfsStarted () {
-  console.log('IPFS started')
+// async function ipfsStarted () {
+//   console.log('IPFS started')
 
   // ------ Y.js: Initialize CRDT ------
-  const y = await Y({
-    db: {
-      name: 'indexeddb'
-    },
-    connector: {
-      name: 'ipfs',
-      room: 'mozfest-flipchart',
-      ipfs: ipfs
-    },
-    share: {
-      flipchart: 'Array'
-    }
-  })
+  // const y = await Y({
+  //   db: {
+  //     name: 'indexeddb'
+  //   },
+  //   connector: {
+  //     name: 'ipfs',
+  //     room: 'p2p-flipchart-demo-room',
+  //     ipfs: ipfs
+  //   },
+  //   share: {
+  //     flipchart: 'Array'
+  //   }
+  // })
 
-  console.log('Y.js started')
-
-  var drawing = y.share.flipchart
+  // var drawing = y.share.flipchart
 
   // ------ IPFS: print Peer Id ------
-  ipfs.id(haveIPFSId)
+  // ipfs.id(haveIPFSId)
 
-  function haveIPFSId (err, peerId) {
-    if (err) { throw err }
-    document.getElementById('status').innerHTML = 'Started. Peer Id is ' +  peerId.id
-  }
+  // function haveIPFSId (err, peerId) {
+  //   if (err) { throw err }
+  //   document.getElementById('status').innerHTML = 'Started. Peer Id is ' +  peerId.id
+  // }
 
   // ------ D3: translate line point into D3 render path
   var renderPath = d3.line()
@@ -70,41 +64,41 @@ async function ipfsStarted () {
   var svg = d3.select('#flipchart')
 
   // ------ CRDT and D3: Draw a new line ------
-  function drawLine (yarray) {
-    var line = svg.append('path')
-      .datum(yarray.toArray())
-      .attr('class', 'line')
+  // function drawLine (yarray) {
+  //   var line = svg.append('path')
+  //     .datum(yarray.toArray())
+  //     .attr('class', 'line')
 
-    line.attr('d', renderPath)
+  //   line.attr('d', renderPath)
 
-    // Observe changes that happen on this line
-    yarray.observe(lineChanged)
+  //   // Observe changes that happen on this line
+  //   yarray.observe(lineChanged)
 
-    function lineChanged(event) {
-      // we only implement insert events that are appended to the end of the array
-      event.values.forEach(function (value) {
-        line.datum().push(value)
-      })
-      line.attr('d', renderPath)
-    }
-  }
+  //   function lineChanged(event) {
+  //     // we only implement insert events that are appended to the end of the array
+  //     event.values.forEach(function (value) {
+  //       line.datum().push(value)
+  //     })
+  //     line.attr('d', renderPath)
+  //   }
+  // }
 
   // ------ CRDT: listen for new and removed lines ------
-  drawing.observe(drawingChanged)
+  // drawing.observe(drawingChanged)
 
-  function drawingChanged (event) {
-    if (event.type === 'insert') {
-      event.values.forEach(drawLine)
-    } else {
-      // just remove all elements (thats what we do anyway)
-      svg.selectAll('path').remove()
-    }
-  }
+  // function drawingChanged (event) {
+  //   if (event.type === 'insert') {
+  //     event.values.forEach(drawLine)
+  //   } else {
+  //     // just remove all elements (thats what we do anyway)
+  //     svg.selectAll('path').remove()
+  //   }
+  // }
 
   // ------ CRDT: draw all existing content ------
-  for (var i = 0; i < drawing.length; i++) {
-    drawLine(drawing.get(i))
-  }
+  // for (var i = 0; i < drawing.length; i++) {
+  //   drawLine(drawing.get(i))
+  // }
 
   // ------ User interaction: handle drag events ------
   svg.call(d3.drag()
@@ -116,13 +110,13 @@ async function ipfsStarted () {
 
   function dragStarted () {
     // --- With CRDT:
-    drawing.insert(drawing.length, [Y.Array])
-    sharedLine = drawing.get(drawing.length - 1)
+    // drawing.insert(drawing.length, [Y.Array])
+    // sharedLine = drawing.get(drawing.length - 1)
 
     // --- Without CRDT:
-    // sharedLine = svg.append('path')
-    //   .datum([])
-    //   .attr('class', 'line')
+    sharedLine = svg.append('path')
+      .datum([])
+      .attr('class', 'line')
   }
 
   // After one dragged event is recognized, we ignore them for 33ms.
@@ -135,11 +129,11 @@ async function ipfsStarted () {
       const mouse = d3.mouse(this)
 
       // --- With CRDT:
-      sharedLine.push([mouse])
+      // sharedLine.push([mouse])
 
       // --- Without CRDT:
-      // sharedLine.datum().push(mouse)
-      // sharedLine.attr('d', renderPath)
+      sharedLine.datum().push(mouse)
+      sharedLine.attr('d', renderPath)
     }
   }
 
@@ -155,9 +149,9 @@ async function ipfsStarted () {
 
   function clickedClear() {
     // --- With CRDT:
-    drawing.delete(0, drawing.length)
+    // drawing.delete(0, drawing.length)
 
     // --- Without CRDT:
-    // svg.selectAll('path').remove()
+    svg.selectAll('path').remove()
   }
-}
+// }
