@@ -1,6 +1,6 @@
-# p2p-flipchart
+# peer-flipchart
 
-<a href="https://protocol.io"><img src="https://img.shields.io/badge/made%20by-Protocol%20Labs-blue.svg?style=flat-square" /></a>
+<a href="https://protocol.ai"><img src="https://img.shields.io/badge/made%20by-Protocol%20Labs-blue.svg?style=flat-square" /></a>
 <a href="http://webchat.freenode.net/?channels=%23ipfs"><img src="https://img.shields.io/badge/freenode-%23ipfs-blue.svg?style=flat-square" /></a>
 
 DIY Decentralized Flipchart app
@@ -17,7 +17,7 @@ DIY Decentralized Flipchart app
 ### Download
 
 ```bash
-$ git clone https://github.com/ipfs-shipyard/p2p-flipchart.git
+$ git clone https://github.com/ipfs-shipyard/peer-flipchart.git
 $ cd p2p-flipchart
 ```
 
